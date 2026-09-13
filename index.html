@@ -3,354 +3,333 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Simulasi STS Interaktif - Khidmatussunnah</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>STS PRO CBT - Khidmatussunnah</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #0d9488;
-            --bg: #f0f4f8;
-            --card-bg: #ffffff;
-            --text: #1e293b;
-            --correct: #22c55e;
-            --wrong: #ef4444;
+            --bg-dark: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --accent-blue: #38bdf8;
+            --accent-purple: #818cf8;
+            --success: #10b981;
+            --danger: #f43f5e;
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
         }
 
-        * { box-sizing: border-box; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #e0f2fe 0%, #f0fdf4 100%);
-            color: var(--text);
-            margin: 0;
-            padding: 10px 10px 80px 10px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #090d16;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(129, 140, 248, 0.15) 0px, transparent 50%);
+            color: var(--text-main);
             min-height: 100vh;
+            padding: 15px 10px 80px 10px;
         }
 
-        .container {
-            max-width: 750px;
+        .app-container {
+            max-width: 800px;
             margin: 0 auto;
+        }
+
+        /* Header Cyber Glassmorphism */
+        .header-card {
             background: var(--card-bg);
-            padding: 20px;
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-        }
-
-        /* Nav Header & User Profile Bar */
-        .user-bar {
-            background: #f8fafc;
-            border: 2px dashed #cbd5e1;
-            padding: 15px;
-            border-radius: 14px;
+            padding: 20px;
             margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
 
-        .user-bar i {
-            font-size: 1.8rem;
-            color: var(--primary);
+        .brand-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .user-field {
+            margin-top: 15px;
+            position: relative;
         }
 
         .user-input {
             width: 100%;
-            padding: 10px 14px;
-            border: 2px solid #cbd5e1;
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 1rem;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1.5px solid rgba(255, 255, 255, 0.15);
+            padding: 12px 16px 12px 42px;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 0.95rem;
             font-weight: 600;
             outline: none;
-            transition: border-color 0.2s;
+            transition: all 0.3s;
         }
 
         .user-input:focus {
-            border-color: var(--primary);
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
         }
 
-        /* Navigasi Tab / Menu Switcher */
-        .nav-menu {
-            display: flex;
-            gap: 8px;
-            background: #e2e8f0;
-            padding: 6px;
+        .input-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent-blue);
+        }
+
+        /* Navigasi Tab Futuristik */
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .nav-item {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 12px;
             border-radius: 14px;
-            margin-bottom: 25px;
-            overflow-x: auto;
-        }
-
-        .nav-btn {
-            flex: 1;
-            min-width: 90px;
-            padding: 10px 12px;
-            border: none;
-            border-radius: 10px;
-            background: transparent;
-            color: #64748b;
-            font-weight: 600;
-            font-size: 0.9rem;
+            color: var(--text-sub);
+            font-weight: 700;
+            font-size: 0.85rem;
             cursor: pointer;
-            transition: all 0.25s ease;
-            white-space: nowrap;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
         }
 
-        .nav-btn.active {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+        .nav-item.active {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.2) 0%, rgba(129, 140, 248, 0.2) 100%);
+            border-color: var(--accent-blue);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.2);
         }
 
-        /* Soal Card Styling & Animasi */
+        /* Soal Container */
         .tab-content { display: none; }
         .tab-content.active {
             display: block;
-            animation: fadeIn 0.4s ease-out;
+            animation: slideUp 0.4s ease;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .question-box {
+        .q-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 20px;
             margin-bottom: 20px;
-            padding: 18px;
-            background: #ffffff;
-            border-radius: 14px;
-            border: 2px solid #e2e8f0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-            transition: transform 0.2s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
 
-        .question-title {
-            font-size: 1.05rem;
+        .q-text {
+            font-size: 1rem;
             font-weight: 600;
-            margin-bottom: 12px;
-            line-height: 1.5;
+            line-height: 1.6;
+            margin-bottom: 15px;
         }
 
-        .btn-audio {
-            background: #dbeafe;
-            color: var(--primary);
-            border: none;
-            border-radius: 8px;
-            padding: 6px 12px;
-            font-size: 0.85rem;
+        .audio-btn {
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent-blue);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 10px;
+            padding: 8px 14px;
+            font-size: 0.8rem;
+            font-weight: 700;
             cursor: pointer;
-            font-weight: 600;
-            margin-top: 5px;
-            transition: background 0.2s;
+            transition: all 0.2s;
+            margin-bottom: 15px;
         }
 
-        .btn-audio:active { transform: scale(0.96); }
+        .audio-btn:hover { background: rgba(56, 189, 248, 0.3); }
 
-        .option-item {
+        .opt-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .opt-card {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 14px 16px;
+            border-radius: 12px;
+            cursor: pointer;
             display: flex;
             align-items: center;
-            background: #f8fafc;
-            padding: 14px 16px;
-            margin: 10px 0;
-            border-radius: 12px;
-            border: 2px solid #e2e8f0;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
+            gap: 12px;
+            transition: all 0.2s;
         }
 
-        .option-item input[type="radio"] {
-            width: 22px;
-            height: 22px;
-            margin-right: 14px;
-            flex-shrink: 0;
+        .opt-card:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(30, 41, 59, 0.8);
         }
 
-        .option-item.correct {
-            background-color: #dcfce7 !important;
-            border-color: var(--correct) !important;
-            color: #15803d;
-            font-weight: 700;
-            animation: pulseCorrect 0.4s ease;
+        .opt-card input { display: none; }
+
+        .opt-radio {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid var(--text-sub);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
         }
 
-        .option-item.wrong {
-            background-color: #fee2e2 !important;
-            border-color: var(--wrong) !important;
-            color: #b91c1c;
-            animation: shake 0.3s ease;
+        .opt-card.selected .opt-radio {
+            border-color: var(--accent-blue);
+            background: var(--accent-blue);
         }
 
-        @keyframes pulseCorrect {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
+        .opt-card.correct {
+            background: rgba(16, 185, 129, 0.15) !important;
+            border-color: var(--success) !important;
+            color: #6ee7b7;
         }
 
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
+        .opt-card.wrong {
+            background: rgba(244, 63, 94, 0.15) !important;
+            border-color: var(--danger) !important;
+            color: #fca5a5;
         }
 
         .btn-check {
-            background: #475569;
-            color: white;
-            border: none;
+            width: 100%;
+            margin-top: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-sub);
             padding: 10px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            border-radius: 8px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.85rem;
             cursor: pointer;
-            width: 100%;
-            margin-top: 10px;
+            transition: all 0.2s;
         }
 
+        .btn-check:hover { background: rgba(255, 255, 255, 0.1); color: #fff; }
+
+        /* Floating Submit Button */
         .btn-submit {
-            background: linear-gradient(135deg, #0d9488 0%, #059669 100%);
-            color: white;
-            border: none;
-            padding: 18px;
-            font-size: 1.15rem;
-            font-weight: 700;
-            border-radius: 14px;
-            cursor: pointer;
             width: 100%;
-            margin-top: 25px;
-            box-shadow: 0 6px 20px rgba(13, 148, 136, 0.3);
-            transition: transform 0.2s;
-        }
-
-        .btn-submit:active { transform: scale(0.98); }
-
-        /* Kartu Hasil Nilai Interaktif */
-        .result-card {
-            display: none;
-            background: #ffffff;
-            border: 3px solid var(--primary);
-            border-radius: 20px;
-            padding: 25px;
-            margin-top: 30px;
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(37, 99, 235, 0.15);
-            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        @keyframes popIn {
-            0% { transform: scale(0.8); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        .result-header {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-
-        .student-badge {
-            display: inline-block;
-            background: #dbeafe;
-            color: var(--primary-dark);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-        }
-
-        .score-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin: 20px 0;
-        }
-
-        .score-card {
-            background: #f8fafc;
-            padding: 15px 10px;
-            border-radius: 14px;
-            border: 2px solid #e2e8f0;
-        }
-
-        .score-card .title { font-size: 0.8rem; color: #64748b; font-weight: 600; }
-        .score-card .val { font-size: 1.3rem; font-weight: 700; color: var(--primary); margin-top: 5px; }
-
-        .total-badge {
-            background: #f0fdf4;
-            color: #166534;
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+            border: none;
+            color: #fff;
             padding: 16px;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 1.2rem;
-            border: 2px dashed #bbf7d0;
+            border-radius: 14px;
+            font-weight: 800;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(56, 189, 248, 0.4);
+            transition: all 0.3s;
         }
 
-        @media (max-width: 600px) {
-            .score-grid { grid-template-columns: 1fr; }
+        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(56, 189, 248, 0.6); }
+
+        /* Kartu Nilai Dashboard */
+        .result-overlay {
+            display: none;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 24px;
+            padding: 30px 20px;
+            margin-top: 25px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            animation: popUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popUp {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .score-big {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #10b981 0%, #38bdf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 10px 0;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div style="text-align:center; margin-bottom: 15px;">
-        <h1 style="margin:0; color:var(--primary); font-size: 1.6rem;">Ujian STS Interaktif</h1>
-        <span style="color:#64748b; font-size:0.85rem;">Salafiyah Ula Khidmatussunnah</span>
+<div class="app-container">
+    <div class="header-card">
+        <div class="brand-title"><i class="fa-solid fa-microchip"></i> CBT EXAM PRO</div>
+        <div style="font-size:0.8rem; color:var(--text-sub);">Salafiyah Ula Khidmatussunnah</div>
+        <div class="user-field">
+            <i class="fa-solid fa-user-astronaut input-icon"></i>
+            <input type="text" id="namaSiswa" class="user-input" placeholder="Masukkan Nama Siswa..." value="Musa Alfata">
+        </div>
     </div>
 
-    <!-- Input Nama Siswa -->
-    <div class="user-bar">
-        <i class="fa-solid fa-user-graduate"></i>
-        <input type="text" id="namaSiswa" class="user-input" placeholder="Ketik Nama Lengkap Kamu di Sini..." value="Musa Alfata">
+    <div class="nav-grid">
+        <div class="nav-item active" onclick="switchTab('indo')"><i class="fa-solid fa-book"></i> INDONESIA</div>
+        <div class="nav-item" onclick="switchTab('inggris')"><i class="fa-solid fa-globe"></i> INGGRIS</div>
+        <div class="nav-item" onclick="switchTab('pkn')"><i class="fa-solid fa-shield-halved"></i> PKN</div>
     </div>
 
-    <!-- Menu Tab Navigasi -->
-    <div class="nav-menu">
-        <button class="nav-btn active" onclick="switchTab('indo')"><i class="fa-solid fa-book"></i> B. Indo</button>
-        <button class="nav-btn" onclick="switchTab('inggris')"><i class="fa-solid fa-language"></i> B. Inggris</button>
-        <button class="nav-btn" onclick="switchTab('pkn')"><i class="fa-solid fa-flag"></i> PKN</button>
-    </div>
-
-    <!-- Container Soal -->
     <form id="examForm">
         <div id="tab-indo" class="tab-content active"></div>
         <div id="tab-inggris" class="tab-content"></div>
         <div id="tab-pkn" class="tab-content"></div>
 
         <button type="button" class="btn-submit" onclick="hitungNilai()">
-            <i class="fa-solid fa-trophy"></i> Selesai & Kirim Jawaban
+            <i class="fa-solid fa-paper-plane"></i> SUBMIT ALL ANSWERS
         </button>
     </form>
 
-    <!-- Kartu Hasil Nilai Interaktif -->
-    <div id="result-card" class="result-card">
-        <i class="fa-solid fa-award" style="font-size: 3rem; color: #f59e0b; margin-bottom: 10px;"></i>
-        <div class="result-header">KARTU HASIL UJIAN</div>
-        <div class="student-badge" id="res-nama">Nama: -</div>
+    <div id="result-overlay" class="result-overlay">
+        <i class="fa-solid fa-trophy" style="font-size:2.5rem; color:#f59e0b;"></i>
+        <h2 style="margin-top:10px; font-weight:800;">PERFORMANCE REPORT</h2>
+        <div id="res-nama" style="color:var(--text-sub); font-weight:600; margin-top:4px;">-</div>
 
-        <div class="score-grid">
-            <div class="score-card">
-                <div class="title">B. Indonesia</div>
-                <div class="val" id="res-indo">0</div>
+        <div class="score-big" id="res-total">0.0</div>
+
+        <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; margin-top:20px;">
+            <div style="background:rgba(15,23,42,0.6); padding:12px; border-radius:12px;">
+                <div style="font-size:0.75rem; color:var(--text-sub);">INDO</div>
+                <div style="font-size:1.1rem; font-weight:700; color:var(--accent-blue);" id="res-indo">0</div>
             </div>
-            <div class="score-card">
-                <div class="title">B. Inggris</div>
-                <div class="val" id="res-inggris">0</div>
+            <div style="background:rgba(15,23,42,0.6); padding:12px; border-radius:12px;">
+                <div style="font-size:0.75rem; color:var(--text-sub);">INGGRIS</div>
+                <div style="font-size:1.1rem; font-weight:700; color:var(--accent-purple);" id="res-inggris">0</div>
             </div>
-            <div class="score-card">
-                <div class="title">PKN</div>
-                <div class="val" id="res-pkn">0</div>
+            <div style="background:rgba(15,23,42,0.6); padding:12px; border-radius:12px;">
+                <div style="font-size:0.75rem; color:var(--text-sub);">PKN</div>
+                <div style="font-size:1.1rem; font-weight:700; color:var(--success);" id="res-pkn">0</div>
             </div>
         </div>
-
-        <div class="total-badge" id="res-total">Nilai Akhir: 0</div>
     </div>
 </div>
 
 <script>
-    // Audio Synthesizer Efek Suara (Tanpa File Eksternal)
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     
     function playSound(type) {
@@ -363,43 +342,34 @@
 
         if (type === 'click') {
             osc.type = 'sine';
-            osc.frequency.setValueAtTime(400, now);
-            gain.gain.setValueAtTime(0.05, now);
-            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+            osc.frequency.setValueAtTime(600, now);
+            gain.gain.setValueAtTime(0.04, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
             osc.start(now);
-            osc.stop(now + 0.05);
+            osc.stop(now + 0.04);
         } else if (type === 'correct') {
-            osc.type = 'triangle';
+            osc.type = 'sine';
             osc.frequency.setValueAtTime(523.25, now);
             osc.frequency.setValueAtTime(659.25, now + 0.08);
-            gain.gain.setValueAtTime(0.12, now);
+            gain.gain.setValueAtTime(0.1, now);
             gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
             osc.start(now);
             osc.stop(now + 0.25);
         } else if (type === 'wrong') {
-            osc.type = 'sawtooth';
-            osc.frequency.setValueAtTime(180, now);
-            osc.frequency.setValueAtTime(130, now + 0.08);
-            gain.gain.setValueAtTime(0.12, now);
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(150, now);
+            osc.frequency.setValueAtTime(100, now + 0.08);
+            gain.gain.setValueAtTime(0.1, now);
             gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
             osc.start(now);
             osc.stop(now + 0.2);
-        } else if (type === 'finish') {
-            osc.type = 'sine';
-            osc.frequency.setValueAtTime(523.25, now);
-            osc.frequency.setValueAtTime(659.25, now + 0.1);
-            osc.frequency.setValueAtTime(783.99, now + 0.2);
-            gain.gain.setValueAtTime(0.15, now);
-            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
-            osc.start(now);
-            osc.stop(now + 0.4);
         }
     }
 
     function switchTab(tabName) {
         playSound('click');
         document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-        document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
         
         document.getElementById(`tab-${tabName}`).classList.add('active');
         event.currentTarget.classList.add('active');
@@ -413,174 +383,4 @@
             window.speechSynthesis.speak(utterance);
         }
     }
-        const bankSoal = {
-        indo: [
-            { q: "1. Unsur utama dalam memahami kisah cerita adalah...", opts: ["A. Menghafal seluruh dialog", "B. Memahami alur dan pesan moral", "C. Menghitung jumlah kata", "D. Menulis ulang tanpa makna"], ans: 1 },
-            { q: "2. Pola kalimat SPOK terdiri dari subjek, predikat, objek, dan...", opts: ["A. Sifat", "B. Keterangan", "C. Sisipan", "D. Sinonim"], ans: 1 },
-            { q: "3. Kalimat dengan pola SPOK yang benar adalah...", opts: ["A. Budi membaca buku di kelas.", "B. Di kelas membaca buku Budi.", "C. Membaca Budi buku kelas.", "D. Buku membaca Budi di kelas."], ans: 0 },
-            { q: "4. Penulisan huruf kapital dan tanda baca yang benar adalah...", opts: ["A. ibu pergi ke pasar", "B. Ibu pergi ke pasar.", "C. ibu pergi ke pasar.", "D. Ibu Pergi ke Pasar"], ans: 1 },
-            { q: "5. Tokoh penentang tokoh utama dalam cerita disebut...", opts: ["A. Protagonis", "B. Antagonis", "C. Tritagonis", "D. Figuran"], ans: 1 },
-            { q: "6. Paragraf yang gagasan utamanya di awal disebut...", opts: ["A. Induktif", "B. Deduktif", "C. Campuran", "D. Deskriptif"], ans: 1 },
-            { q: "7. Paragraf yang gagasan utamanya di akhir disebut...", opts: ["A. Deduktif", "B. Induktif", "C. Ineratif", "D. Naratif"], ans: 1 },
-            { q: "8. Paragraf dengan gagasan utama di awal dan akhir disebut...", opts: ["A. Campuran", "B. Induktif", "C. Deduktif", "D. Kosong"], ans: 0 },
-            { q: "9. Kata khusus dari kata umum 'hewan' adalah...", opts: ["A. Kendaraan", "B. Kucing", "C. Rumah", "D. Pakaian"], ans: 1 },
-            { q: "10. Kata khusus dari kata umum 'bunga' adalah...", opts: ["A. Melati", "B. Meja", "C. Sepatu", "D. Buku"], ans: 0 },
-            { q: "11. Kemampuan mendengar (menyimak) yang baik dilakukan dengan...", opts: ["A. Sambil berbicara", "B. Mendengar seksama dan mencatat poin penting", "C. Tidur", "D. Pergi"], ans: 1 },
-            { q: "12. Watak tokoh yang suka menolong dikategorikan sebagai...", opts: ["A. Antagonis", "B. Protagonis", "C. Jahat", "D. Kejam"], ans: 1 },
-            { q: "13. Penulisan kata depan 'di' untuk tempat yang benar adalah...", opts: ["A. di rumah", "B. dirumah", "C. di-rumah", "D. DiRumah"], ans: 0 },
-            { q: "14. Kalimat penjelas dalam paragraf berfungsi untuk...", opts: ["A. Kalimat utama", "B. Menguraikan kalimat pendukung/rincian", "C. Judul", "D. Kesimpulan"], ans: 1 },
-            { q: "15. Sinonim dari kata 'gemar' adalah...", opts: ["A. Malas", "B. Suka", "C. Benci", "D. Acuh"], ans: 1 },
-            { q: "16. Antonim dari kata 'rajin' adalah...", opts: ["A. Giat", "B. Malas", "C. Cerdas", "D. Cepat"], ans: 1 },
-            { q: "17. Unsur cerita tempat, waktu, dan suasana disebut...", opts: ["A. Tema", "B. Latar (Setting)", "C. Alur", "D. Amanat"], ans: 1 },
-            { q: "18. Pesan moral dalam cerita disebut...", opts: ["A. Amanat", "B. Tokoh", "C. Sudut pandang", "D. Gaya bahasa"], ans: 0 },
-            { q: "19. Perbaikan kalimat 'Mereka pergi ke sekolah naik sepeda' agar baku...", opts: ["A. Mereka naik sepeda ke sekolah.", "B. Ke sekolah mereka naik sepeda.", "C. Mereka pergi ke sekolah dengan mengendarai sepeda.", "D. Sepeda mereka naiki."], ans: 2 },
-            { q: "20. Contoh kalimat perintah (imperatif) adalah...", opts: ["A. Siapa nama kamu?", "B. Tolong ambilkan buku itu!", "C. Wah, indahnya!", "D. Ayah ke kantor."], ans: 1 }
-        ],
-        inggris: [
-            { q: "1. Complete: '... do you live?'", opts: ["A. What", "B. Where", "C. When", "D. Who"], ans: 1 },
-            { q: "2. Complete: '... is your English teacher?' - 'Mr. Ahmad.'", opts: ["A. Who", "B. Where", "C. Why", "D. When"], ans: 0 },
-            { q: "3. Complete: 'She ... to school everyday.'", opts: ["A. go", "B. goes", "C. going", "D. gone"], ans: 1 },
-            { q: "4. Arrange: [is - She - student - a - smart]", opts: ["A. A smart student is she", "B. She is a smart student", "C. Smart is she a student", "D. Student a she is smart"], ans: 1 },
-            { q: "5. Arrange paragraph: (1) He wakes up at 5 AM. (2) Ali is a diligent boy. (3) Then he takes a bath.", opts: ["A. 2 - 1 - 3", "B. 1 - 2 - 3", "C. 3 - 2 - 1", "D. 2 - 3 - 1"], ans: 0 },
-            { q: "6. Indonesian meaning of 'Library' is...", opts: ["A. Laboratorium", "B. Perpustakaan", "C. Kantin", "D. Lapangan"], ans: 1 },
-            { q: "7. The antonym of 'Big' is...", opts: ["A. Large", "B. Small", "C. Tall", "D. Long"], ans: 1 },
-            { q: "8. Complete: 'They ... playing football now.'", opts: ["A. is", "B. are", "C. am", "D. be"], ans: 1 },
-            { q: "9. What is 08.15 in English?", opts: ["A. Quarter past eight", "B. Quarter to eight", "C. Half past eight", "D. Eight o'clock"], ans: 0 },
-            { q: "10. Vocabulary for 'Buku tulis' is...", opts: ["A. Textbook", "B. Notebook", "C. Dictionary", "D. Novel"], ans: 1 },
-            { q: "11. Arrange: [football - play - We - Sundays - on]", opts: ["A. We play football on Sundays", "B. Play we football", "C. On Sundays football play we", "D. Football we play"], ans: 0 },
-            { q: "12. Complete: '... old are you?'", opts: ["A. What", "B. How", "C. Who", "D. Where"], ans: 1 },
-            { q: "13. Synonym of 'Clever' is...", opts: ["A. Stupid", "B. Smart", "C. Lazy", "D. Sad"], ans: 1 },
-            { q: "14. Complete: 'My mother is cooking in the ...'", opts: ["A. Bathroom", "B. Kitchen", "C. Bedroom", "D. Garage"], ans: 1 },
-            { q: "15. Arrange: [apple - eats - an - Budi]", opts: ["A. Budi eats an apple", "B. Apple eats Budi an", "C. An apple eats Budi", "D. Eats Budi an apple"], ans: 0 },
-            { q: "16. 'Teacher' in Indonesian is...", opts: ["A. Murid", "B. Guru", "C. Kepala sekolah", "D. Satpam"], ans: 1 },
-            { q: "17. Response to 'Thank you very much' is...", opts: ["A. Good morning", "B. You're welcome", "C. I am fine", "D. Good bye"], ans: 1 },
-            { q: "18. Meaning of 'Uniform' is...", opts: ["A. Sepatu", "B. Seragam", "C. Topi", "D. Tas"], ans: 1 },
-            { q: "19. Complete: 'There ... seven days in a week.'", opts: ["A. is", "B. are", "C. was", "D. be"], ans: 1 },
-            { q: "20. Arrange: [pencil - is - This - my]", opts: ["A. This pencil is my", "B. This is my pencil", "C. My pencil is this", "D. Is this my pencil"], ans: 1 }
-        ],
-        pkn: [
-            { q: "1. Sila pertama Pancasila tercermin pada sikap...", opts: ["A. Gotong royong", "B. Saling menghormati antarumat beragama", "C. Bermusyawarah", "D. Memakai produk lokal"], ans: 1 },
-            { q: "2. Contoh pengamalan sila kedua di sekolah adalah...", opts: ["A. Menolong teman yang jatuh", "B. Menghina teman", "C. Terlambat", "D. Memilih teman"], ans: 0 },
-            { q: "3. Hubungan antarsila dalam Pancasila bersifat...", opts: ["A. Terpisah", "B. Hierarkis dan saling berkaitan", "C. Bertentangan", "D. Bebas"], ans: 1 },
-            { q: "4. Keputusan bersama melalui musyawarah sesuai sila ke...", opts: ["A. Sila ke-2", "B. Sila ke-3", "C. Sila ke-4", "D. Sila ke-5"], ans: 2 },
-            { q: "5. Bersikap adil dan tidak diskriminatif sesuai sila ke...", opts: ["A. Sila ke-1", "B. Sila ke-3", "C. Sila ke-4", "D. Sila ke-5"], ans: 3 },
-            { q: "6. Menjaga persatuan bangsa sesuai dengan sila...", opts: ["A. Sila ke-1", "B. Sila ke-2", "C. Sila ke-3", "D. Sila ke-4"], ans: 2 },
-            { q: "7. Hubungan sila pertama dan kedua dicontohkan dengan...", opts: ["A. Beribadah sekaligus berbuat baik kepada sesama", "B. Beribadah demi dipuji", "C. Membantu tanpa peduli agama", "D. Memusuhi agama lain"], ans: 0 },
-            { q: "8. Gotong royong membersihkan lingkungan mencerminkan sila...", opts: ["A. Sila 1 dan 2", "B. Sila 3 dan 5", "C. Sila 2 dan 4", "D. Sila 1 saja"], ans: 1 },
-            { q: "9. Sikap saat pendapat musyawarah tidak diterima adalah...", opts: ["A. Marah", "B. Menerima dengan lapang dada", "C. Memaksa", "D. Mogok"], ans: 1 },
-            { q: "10. Bentuk pengamalan Pancasila di sekolah adalah...", opts: ["A. Mengikuti upacara bendera dengan khidmat", "B. Bolos", "C. Berkelahi", "D. Merusak fasilitas"], ans: 0 },
-            { q: "11. Sila pertama Pancasila dilambangkan dengan...", opts: ["A. Rantai", "B. Bintang", "C. Pohon Beringin", "D. Kepala Banteng"], ans: 1 },
-            { q: "12. Lambang sila kelima Pancasila adalah...", opts: ["A. Padi dan Kapas", "B. Bintang", "C. Rantai", "D. Garuda"], ans: 0 },
-            { q: "13. Nilai dasar sila ketiga adalah...", opts: ["A. Nasionalisme dan cinta tanah air", "B. Individualisme", "C. Fanatisme", "D. Materialisme"], ans: 0 },
-            { q: "14. Menghargai hasil karya orang lain pengamalan sila...", opts: ["A. Sila ke-2", "B. Sila ke-4", "C. Sila ke-5", "D. Sila ke-1"], ans: 2 },
-            { q: "15. Dalam keluarga, pengambilan keputusan sebaiknya dengan...", opts: ["A. Keputusan sendiri", "B. Musyawarah keluarga", "C. Paksaan", "D. Pendapat tetangga"], ans: 1 },
-            { q: "16. Perilaku hemat dan tidak mewah mencerminkan sila...", opts: ["A. Sila ke-5", "B. Sila ke-1", "C. Sila ke-2", "D. Sila ke-3"], ans: 0 },
-            { q: "17. Mengapa antarsila Pancasila tidak bisa dipisahkan?", opts: ["A. Ketetapan undang-undang", "B. Saling menjiwai dan dijiwai", "C. Dibuat satu orang", "D. Lambangnya mirip"], ans: 1 },
-            { q: "18. Contoh pengamalan sila keempat di masyarakat adalah...", opts: ["A. Pemilihan ketua RT secara musyawarah/pemungutan suara jujur", "B. Kerja bakti", "C. Memberi sumbangan", "D. Berdoa"], ans: 0 },
-            { q: "19. Menjaga fasilitas umum di sekolah mencerminkan sila...", opts: ["A. Sila ke-3 dan ke-5", "B. Sila ke-1", "C. Sila ke-2", "D. Sila ke-4"], ans: 0 },
-            { q: "20. Semboyan negara Indonesia adalah...", opts: ["A. Tut Wuri Handayani", "B. Bhinneka Tunggal Ika", "C. Gemah Ripah", "D. Jer Basuki"], ans: 1 }
-        ]
-    };
-
-    function renderAllSoal() {
-        ['indo', 'inggris', 'pkn'].forEach(mapel => {
-            const container = document.getElementById(`tab-${mapel}`);
-            let html = "";
-            bankSoal[mapel].forEach((item, idx) => {
-                const cleanText = item.q.replace(/'/g, "\\'");
-                html += `
-                <div class="question-box">
-                    <div class="question-title">${item.q}</div>
-                    <button type="button" class="btn-audio" onclick="speakText('${cleanText}')">
-                        <i class="fa-solid fa-volume-high"></i> Baca Soal
-                    </button>
-                    <div style="margin-top:12px;">`;
-                
-                item.opts.forEach((opt, optIdx) => {
-                    const idVal = `${mapel}_${idx}_${optIdx}`;
-                    html += `
-                    <label class="option-item" id="box_${idVal}" onclick="playSound('click')">
-                        <input type="radio" name="${mapel}_${idx}" value="${optIdx}" id="${idVal}">
-                        <span>${opt}</span>
-                    </label>`;
-                });
-
-                html += `
-                    </div>
-                    <button type="button" class="btn-check" onclick="cekJawabanDirect('${mapel}', ${idx})">
-                        <i class="fa-solid fa-check-double"></i> Cek Jawaban
-                    </button>
-                </div>`;
-            });
-            container.innerHTML = html;
-        });
-    }
-
-    function cekJawabanDirect(mapelKey, questionIdx) {
-        const selected = document.querySelector(`input[name="${mapelKey}_${questionIdx}"]:checked`);
-        if (!selected) {
-            alert("Pilih salah satu jawaban terlebih dahulu!");
-            return;
-        }
-
-        const selectedVal = parseInt(selected.value);
-        const correctVal = bankSoal[mapelKey][questionIdx].ans;
-
-        for (let i = 0; i < 4; i++) {
-            const el = document.getElementById(`box_${mapelKey}_${questionIdx}_${i}`);
-            if (el) el.classList.remove('correct', 'wrong');
-        }
-
-        const selectedBox = document.getElementById(`box_${mapelKey}_${questionIdx}_${selectedVal}`);
-        const correctBox = document.getElementById(`box_${mapelKey}_${questionIdx}_${correctVal}`);
-
-        if (selectedVal === correctVal) {
-            if (selectedBox) selectedBox.classList.add('correct');
-            playSound('correct');
-        } else {
-            if (selectedBox) selectedBox.classList.add('wrong');
-            if (correctBox) correctBox.classList.add('correct');
-            playSound('wrong');
-        }
-    }
-
-    function hitungNilai() {
-        playSound('finish');
-
-        const nama = document.getElementById('namaSiswa').value || "Siswa";
-        let scoreIndo = 0, scoreInggris = 0, scorePkn = 0;
-
-        bankSoal.indo.forEach((item, idx) => {
-            let selected = document.querySelector(`input[name="indo_${idx}"]:checked`);
-            if (selected && parseInt(selected.value) === item.ans) scoreIndo += 5;
-        });
-
-        bankSoal.inggris.forEach((item, idx) => {
-            let selected = document.querySelector(`input[name="inggris_${idx}"]:checked`);
-            if (selected && parseInt(selected.value) === item.ans) scoreInggris += 5;
-        });
-
-        bankSoal.pkn.forEach((item, idx) => {
-            let selected = document.querySelector(`input[name="pkn_${idx}"]:checked`);
-            if (selected && parseInt(selected.value) === item.ans) scorePkn += 5;
-        });
-
-        let totalRata = (scoreIndo + scoreInggris + scorePkn) / 3;
-
-        document.getElementById('res-nama').innerText = `Nama: ${nama}`;
-        document.getElementById('res-indo').innerText = `${scoreIndo} / 100`;
-        document.getElementById('res-inggris').innerText = `${scoreInggris} / 100`;
-        document.getElementById('res-pkn').innerText = `${scorePkn} / 100`;
-        document.getElementById('res-total').innerText = `Nilai Rata-rata: ${totalRata.toFixed(1)}`;
-        
-        let card = document.getElementById('result-card');
-        card.style.display = 'block';
-        card.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    document.addEventListener("DOMContentLoaded", renderAllSoal);
-</script>
-
-</body>
-</html>
-
+    
