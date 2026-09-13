@@ -212,4 +212,170 @@
             window.speechSynthesis.speak(utterance);
         }
     }
-    
+        const bankSoal = {
+        indo: [
+            { q: "1. Unsur utama dalam memahami kisah cerita adalah...", opts: ["A. Menghafal seluruh dialog", "B. Memahami alur dan pesan moral", "C. Menghitung jumlah kata", "D. Menulis ulang tanpa makna"], ans: 1 },
+            { q: "2. Pola kalimat SPOK terdiri dari subjek, predikat, objek, dan...", opts: ["A. Sifat", "B. Keterangan", "C. Sisipan", "D. Sinonim"], ans: 1 },
+            { q: "3. Kalimat dengan pola SPOK yang benar adalah...", opts: ["A. Budi membaca buku di kelas.", "B. Di kelas membaca buku Budi.", "C. Membaca Budi buku kelas.", "D. Buku membaca Budi di kelas."], ans: 0 },
+            { q: "4. Penulisan huruf kapital dan tanda baca yang benar adalah...", opts: ["A. ibu pergi ke pasar", "B. Ibu pergi ke pasar.", "C. ibu pergi ke pasar.", "D. Ibu Pergi ke Pasar"], ans: 1 },
+            { q: "5. Tokoh penentang tokoh utama dalam cerita disebut...", opts: ["A. Protagonis", "B. Antagonis", "C. Tritagonis", "D. Figuran"], ans: 1 },
+            { q: "6. Paragraf yang gagasan utamanya di awal disebut...", opts: ["A. Induktif", "B. Deduktif", "C. Campuran", "D. Deskriptif"], ans: 1 },
+            { q: "7. Paragraf yang gagasan utamanya di akhir disebut...", opts: ["A. Deduktif", "B. Induktif", "C. Ineratif", "D. Naratif"], ans: 1 },
+            { q: "8. Paragraf dengan gagasan utama di awal dan akhir disebut...", opts: ["A. Campuran", "B. Induktif", "C. Deduktif", "D. Kosong"], ans: 0 },
+            { q: "9. Kata khusus dari kata umum 'hewan' adalah...", opts: ["A. Kendaraan", "B. Kucing", "C. Rumah", "D. Pakaian"], ans: 1 },
+            { q: "10. Kata khusus dari kata umum 'bunga' adalah...", opts: ["A. Melati", "B. Meja", "C. Sepatu", "D. Buku"], ans: 0 },
+            { q: "11. Kemampuan mendengar (menyimak) yang baik dilakukan dengan...", opts: ["A. Sambil berbicara", "B. Mendengar seksama dan mencatat poin penting", "C. Tidur", "D. Pergi"], ans: 1 },
+            { q: "12. Watak tokoh yang suka menolong dikategorikan sebagai...", opts: ["A. Antagonis", "B. Protagonis", "C. Jahat", "D. Kejam"], ans: 1 },
+            { q: "13. Penulisan kata depan 'di' untuk tempat yang benar adalah...", opts: ["A. di rumah", "B. dirumah", "C. di-rumah", "D. DiRumah"], ans: 0 },
+            { q: "14. Kalimat penjelas dalam paragraf berfungsi untuk...", opts: ["A. Kalimat utama", "B. Menguraikan kalimat pendukung/rincian", "C. Judul", "D. Kesimpulan"], ans: 1 },
+            { q: "15. Sinonim dari kata 'gemar' adalah...", opts: ["A. Malas", "B. Suka", "C. Benci", "D. Acuh"], ans: 1 },
+            { q: "16. Antonim dari kata 'rajin' adalah...", opts: ["A. Giat", "B. Malas", "C. Cerdas", "D. Cepat"], ans: 1 },
+            { q: "17. Unsur cerita tempat, waktu, dan suasana disebut...", opts: ["A. Tema", "B. Latar (Setting)", "C. Alur", "D. Amanat"], ans: 1 },
+            { q: "18. Pesan moral dalam cerita disebut...", opts: ["A. Amanat", "B. Tokoh", "C. Sudut pandang", "D. Gaya bahasa"], ans: 0 },
+            { q: "19. Perbaikan kalimat 'Mereka pergi ke sekolah naik sepeda' agar baku...", opts: ["A. Mereka naik sepeda ke sekolah.", "B. Ke sekolah mereka naik sepeda.", "C. Mereka pergi ke sekolah dengan mengendarai sepeda.", "D. Sepeda mereka naiki."], ans: 2 },
+            { q: "20. Contoh kalimat perintah (imperatif) adalah...", opts: ["A. Siapa nama kamu?", "B. Tolong ambilkan buku itu!", "C. Wah, indahnya!", "D. Ayah ke kantor."], ans: 1 }
+        ],
+        inggris: [
+            { q: "1. Complete: '... do you live?'", opts: ["A. What", "B. Where", "C. When", "D. Who"], ans: 1 },
+            { q: "2. Complete: '... is your English teacher?' - 'Mr. Ahmad.'", opts: ["A. Who", "B. Where", "C. Why", "D. When"], ans: 0 },
+            { q: "3. Complete: 'She ... to school everyday.'", opts: ["A. go", "B. goes", "C. going", "D. gone"], ans: 1 },
+            { q: "4. Arrange: [is - She - student - a - smart]", opts: ["A. A smart student is she", "B. She is a smart student", "C. Smart is she a student", "D. Student a she is smart"], ans: 1 },
+            { q: "5. Arrange paragraph: (1) He wakes up at 5 AM. (2) Ali is a diligent boy. (3) Then he takes a bath.", opts: ["A. 2 - 1 - 3", "B. 1 - 2 - 3", "C. 3 - 2 - 1", "D. 2 - 3 - 1"], ans: 0 },
+            { q: "6. Indonesian meaning of 'Library' is...", opts: ["A. Laboratorium", "B. Perpustakaan", "C. Kantin", "D. Lapangan"], ans: 1 },
+            { q: "7. The antonym of 'Big' is...", opts: ["A. Large", "B. Small", "C. Tall", "D. Long"], ans: 1 },
+            { q: "8. Complete: 'They ... playing football now.'", opts: ["A. is", "B. are", "C. am", "D. be"], ans: 1 },
+            { q: "9. What is 08.15 in English?", opts: ["A. Quarter past eight", "B. Quarter to eight", "C. Half past eight", "D. Eight o'clock"], ans: 0 },
+            { q: "10. Vocabulary for 'Buku tulis' is...", opts: ["A. Textbook", "B. Notebook", "C. Dictionary", "D. Novel"], ans: 1 },
+            { q: "11. Arrange: [football - play - We - Sundays - on]", opts: ["A. We play football on Sundays", "B. Play we football", "C. On Sundays football play we", "D. Football we play"], ans: 0 },
+            { q: "12. Complete: '... old are you?'", opts: ["A. What", "B. How", "C. Who", "D. Where"], ans: 1 },
+            { q: "13. Synonym of 'Clever' is...", opts: ["A. Stupid", "B. Smart", "C. Lazy", "D. Sad"], ans: 1 },
+            { q: "14. Complete: 'My mother is cooking in the ...'", opts: ["A. Bathroom", "B. Kitchen", "C. Bedroom", "D. Garage"], ans: 1 },
+            { q: "15. Arrange: [apple - eats - an - Budi]", opts: ["A. Budi eats an apple", "B. Apple eats Budi an", "C. An apple eats Budi", "D. Eats Budi an apple"], ans: 0 },
+            { q: "16. 'Teacher' in Indonesian is...", opts: ["A. Murid", "B. Guru", "C. Kepala sekolah", "D. Satpam"], ans: 1 },
+            { q: "17. Response to 'Thank you very much' is...", opts: ["A. Good morning", "B. You're welcome", "C. I am fine", "D. Good bye"], ans: 1 },
+            { q: "18. Meaning of 'Uniform' is...", opts: ["A. Sepatu", "B. Seragam", "C. Topi", "D. Tas"], ans: 1 },
+            { q: "19. Complete: 'There ... seven days in a week.'", opts: ["A. is", "B. are", "C. was", "D. be"], ans: 1 },
+            { q: "20. Arrange: [pencil - is - This - my]", opts: ["A. This pencil is my", "B. This is my pencil", "C. My pencil is this", "D. Is this my pencil"], ans: 1 }
+        ],
+        pkn: [
+            { q: "1. Sila pertama Pancasila tercermin pada sikap...", opts: ["A. Gotong royong", "B. Saling menghormati antarumat beragama", "C. Bermusyawarah", "D. Memakai produk lokal"], ans: 1 },
+            { q: "2. Contoh pengamalan sila kedua di sekolah adalah...", opts: ["A. Menolong teman yang jatuh", "B. Menghina teman", "C. Terlambat", "D. Memilih teman"], ans: 0 },
+            { q: "3. Hubungan antarsila dalam Pancasila bersifat...", opts: ["A. Terpisah", "B. Hierarkis dan saling berkaitan", "C. Bertentangan", "D. Bebas"], ans: 1 },
+            { q: "4. Keputusan bersama melalui musyawarah sesuai sila ke...", opts: ["A. Sila ke-2", "B. Sila ke-3", "C. Sila ke-4", "D. Sila ke-5"], ans: 2 },
+            { q: "5. Bersikap adil dan tidak diskriminatif sesuai sila ke...", opts: ["A. Sila ke-1", "B. Sila ke-3", "C. Sila ke-4", "D. Sila ke-5"], ans: 3 },
+            { q: "6. Menjaga persatuan bangsa sesuai dengan sila...", opts: ["A. Sila ke-1", "B. Sila ke-2", "C. Sila ke-3", "D. Sila ke-4"], ans: 2 },
+            { q: "7. Hubungan sila pertama dan kedua dicontohkan dengan...", opts: ["A. Beribadah sekaligus berbuat baik kepada sesama", "B. Beribadah demi dipuji", "C. Membantu tanpa peduli agama", "D. Memusuhi agama lain"], ans: 0 },
+            { q: "8. Gotong royong membersihkan lingkungan mencerminkan sila...", opts: ["A. Sila 1 dan 2", "B. Sila 3 dan 5", "C. Sila 2 dan 4", "D. Sila 1 saja"], ans: 1 },
+            { q: "9. Sikap saat pendapat musyawarah tidak diterima adalah...", opts: ["A. Marah", "B. Menerima dengan lapang dada", "C. Memaksa", "D. Mogok"], ans: 1 },
+            { q: "10. Bentuk pengamalan Pancasila di sekolah adalah...", opts: ["A. Mengikuti upacara bendera dengan khidmat", "B. Bolos", "C. Berkelahi", "D. Merusak fasilitas"], ans: 0 },
+            { q: "11. Sila pertama Pancasila dilambangkan dengan...", opts: ["A. Rantai", "B. Bintang", "C. Pohon Beringin", "D. Kepala Banteng"], ans: 1 },
+            { q: "12. Lambang sila kelima Pancasila adalah...", opts: ["A. Padi dan Kapas", "B. Bintang", "C. Rantai", "D. Garuda"], ans: 0 },
+            { q: "13. Nilai dasar sila ketiga adalah...", opts: ["A. Nasionalisme dan cinta tanah air", "B. Individualisme", "C. Fanatisme", "D. Materialisme"], ans: 0 },
+            { q: "14. Menghargai hasil karya orang lain pengamalan sila...", opts: ["A. Sila ke-2", "B. Sila ke-4", "C. Sila ke-5", "D. Sila ke-1"], ans: 2 },
+            { q: "15. Dalam keluarga, pengambilan keputusan sebaiknya dengan...", opts: ["A. Keputusan sendiri", "B. Musyawarah keluarga", "C. Paksaan", "D. Pendapat tetangga"], ans: 1 },
+            { q: "16. Perilaku hemat dan tidak mewah mencerminkan sila...", opts: ["A. Sila ke-5", "B. Sila ke-1", "C. Sila ke-2", "D. Sila ke-3"], ans: 0 },
+            { q: "17. Mengapa antarsila Pancasila tidak bisa dipisahkan?", opts: ["A. Ketetapan undang-undang", "B. Saling menjiwai dan dijiwai", "C. Dibuat satu orang", "D. Lambangnya mirip"], ans: 1 },
+            { q: "18. Contoh pengamalan sila keempat di masyarakat adalah...", opts: ["A. Pemilihan ketua RT secara musyawarah/pemungutan suara jujur", "B. Kerja bakti", "C. Memberi sumbangan", "D. Berdoa"], ans: 0 },
+            { q: "19. Menjaga fasilitas umum di sekolah mencerminkan sila...", opts: ["A. Sila ke-3 dan ke-5", "B. Sila ke-1", "C. Sila ke-2", "D. Sila ke-4"], ans: 0 },
+            { q: "20. Semboyan negara Indonesia adalah...", opts: ["A. Tut Wuri Handayani", "B. Bhinneka Tunggal Ika", "C. Gemah Ripah", "D. Jer Basuki"], ans: 1 }
+        ]
+    };
+
+    function renderAllSoal() {
+        ['indo', 'inggris', 'pkn'].forEach(mapel => {
+            const container = document.getElementById(`render-${mapel}`);
+            let html = "";
+            bankSoal[mapel].forEach((item, idx) => {
+                const cleanText = item.q.replace(/'/g, "\\'");
+                html += `
+                <div class="question-box">
+                    <div class="question-title">${item.q}</div>
+                    <button type="button" class="btn-audio" onclick="speakText('${cleanText}')">
+                        <i class="fa-solid fa-volume-high"></i> Dengarkan Soal
+                    </button>
+                    <div style="margin-top:15px;">`;
+                
+                item.opts.forEach((opt, optIdx) => {
+                    const idVal = `${mapel}_${idx}_${optIdx}`;
+                    html += `
+                    <label class="option-item" id="box_${idVal}">
+                        <input type="radio" name="${mapel}_${idx}" value="${optIdx}" id="${idVal}">
+                        <span>${opt}</span>
+                    </label>`;
+                });
+
+                html += `
+                    </div>
+                    <button type="button" class="btn-check" onclick="cekJawabanDirect('${mapel}', ${idx})">
+                        <i class="fa-solid fa-check-circle"></i> Periksa Jawaban Ini
+                    </button>
+                </div>`;
+            });
+            container.innerHTML = html;
+        });
+    }
+
+    function cekJawabanDirect(mapelKey, questionIdx) {
+        const selected = document.querySelector(`input[name="${mapelKey}_${questionIdx}"]:checked`);
+        if (!selected) {
+            alert("Pilih salah satu jawaban terlebih dahulu!");
+            return;
+        }
+
+        const selectedVal = parseInt(selected.value);
+        const correctVal = bankSoal[mapelKey][questionIdx].ans;
+
+        for (let i = 0; i < 4; i++) {
+            const el = document.getElementById(`box_${mapelKey}_${questionIdx}_${i}`);
+            if (el) el.classList.remove('correct', 'wrong');
+        }
+
+        const selectedBox = document.getElementById(`box_${mapelKey}_${questionIdx}_${selectedVal}`);
+        const correctBox = document.getElementById(`box_${mapelKey}_${questionIdx}_${correctVal}`);
+
+        if (selectedVal === correctVal) {
+            if (selectedBox) selectedBox.classList.add('correct');
+            playSound('correct');
+        } else {
+            if (selectedBox) selectedBox.classList.add('wrong');
+            if (correctBox) correctBox.classList.add('correct');
+            playSound('wrong');
+        }
+    }
+
+    function hitungNilai() {
+        let scoreIndo = 0, scoreInggris = 0, scorePkn = 0;
+
+        bankSoal.indo.forEach((item, idx) => {
+            let selected = document.querySelector(`input[name="indo_${idx}"]:checked`);
+            if (selected && parseInt(selected.value) === item.ans) scoreIndo += 5;
+        });
+
+        bankSoal.inggris.forEach((item, idx) => {
+            let selected = document.querySelector(`input[name="inggris_${idx}"]:checked`);
+            if (selected && parseInt(selected.value) === item.ans) scoreInggris += 5;
+        });
+
+        bankSoal.pkn.forEach((item, idx) => {
+            let selected = document.querySelector(`input[name="pkn_${idx}"]:checked`);
+            if (selected && parseInt(selected.value) === item.ans) scorePkn += 5;
+        });
+
+        let totalRata = (scoreIndo + scoreInggris + scorePkn) / 3;
+
+        document.getElementById('res-indo').innerText = `${scoreIndo} / 100`;
+        document.getElementById('res-inggris').innerText = `${scoreInggris} / 100`;
+        document.getElementById('res-pkn').innerText = `${scorePkn} / 100`;
+        document.getElementById('res-total').innerText = `Nilai Rata-rata Keseluruhan: ${totalRata.toFixed(1)}`;
+        
+        let box = document.getElementById('hasil-container');
+        box.style.display = 'block';
+        box.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.addEventListener("DOMContentLoaded", renderAllSoal);
+</script>
+
+</body>
+</html>
+
