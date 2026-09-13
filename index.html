@@ -9,7 +9,6 @@
     <style>
         :root {
             --primary: #2563eb;
-            --primary-dark: #1d4ed8;
             --secondary: #0d9488;
             --bg: #f0f4f8;
             --card-bg: #ffffff;
@@ -44,7 +43,7 @@
 
         .header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         h1 {
@@ -60,48 +59,17 @@
             font-weight: 500;
         }
 
-        /* Navigasi Tablet-Friendly */
-        .tab-container {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 25px;
-            background: #e2e8f0;
-            padding: 8px;
-            border-radius: 12px;
-        }
-
-        .tab-btn {
-            flex: 1;
-            padding: 16px 10px;
-            border: 2px solid transparent;
-            background: #ffffff;
-            color: #334155;
-            font-weight: 700;
-            font-family: inherit;
+        .mapel-header {
+            background: var(--primary);
+            color: white;
+            padding: 12px 18px;
             border-radius: 10px;
-            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 35px 0 15px 0;
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 10px;
-            font-size: 1rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            user-select: none;
-        }
-
-        .tab-btn.active {
-            background: var(--primary);
-            color: #ffffff;
-            border-color: var(--primary-dark);
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-        }
-
-        .mapel-section {
-            display: none;
-        }
-
-        .mapel-section.active {
-            display: block;
         }
 
         .question-box {
@@ -130,7 +98,7 @@
             border: 1px solid #bfdbfe;
             border-radius: 8px;
             padding: 8px 12px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
@@ -182,7 +150,7 @@
             border-radius: 12px;
             cursor: pointer;
             width: 100%;
-            margin-top: 25px;
+            margin-top: 30px;
             box-shadow: 0 6px 18px rgba(13, 148, 136, 0.3);
             display: flex;
             align-items: center;
@@ -251,9 +219,6 @@
             .score-grid {
                 grid-template-columns: 1fr;
             }
-            .tab-btn span {
-                font-size: 0.85rem;
-            }
         }
     </style>
 </head>
@@ -267,34 +232,18 @@
         <div class="subtitle"><i class="fa-solid fa-school"></i> Salafiyah Ula Khidmatussunnah</div>
     </div>
 
-    <!-- Navigasi Tab Utama -->
-    <div class="tab-container">
-        <button type="button" id="tab-indo" class="tab-btn active">
-            <i class="fa-solid fa-book"></i> <span>B. Indonesia</span>
-        </button>
-        <button type="button" id="tab-inggris" class="tab-btn">
-            <i class="fa-solid fa-language"></i> <span>B. Inggris</span>
-        </button>
-        <button type="button" id="tab-pkn" class="tab-btn">
-            <i class="fa-solid fa-flag"></i> <span>PKN</span>
-        </button>
-    </div>
-
     <form id="examForm" onsubmit="hitungNilai(event)">
-        <!-- SECTION BAHASA INDONESIA -->
-        <div class="mapel-section active" id="sec-indo">
-            <div id="render-indo"></div>
-        </div>
+        <!-- MAPEL BAHASA INDONESIA -->
+        <div class="mapel-header"><i class="fa-solid fa-book"></i> 1. Mapel Bahasa Indonesia</div>
+        <div id="render-indo"></div>
 
-        <!-- SECTION BAHASA INGGRIS -->
-        <div class="mapel-section" id="sec-inggris">
-            <div id="render-inggris"></div>
-        </div>
+        <!-- MAPEL BAHASA INGGRIS -->
+        <div class="mapel-header"><i class="fa-solid fa-language"></i> 2. Mapel Bahasa Inggris</div>
+        <div id="render-inggris"></div>
 
-        <!-- SECTION PKN -->
-        <div class="mapel-section" id="sec-pkn">
-            <div id="render-pkn"></div>
-        </div>
+        <!-- MAPEL PKN -->
+        <div class="mapel-header"><i class="fa-solid fa-flag"></i> 3. Mapel PKN</div>
+        <div id="render-pkn"></div>
 
         <button type="submit" class="btn-submit">
             <i class="fa-solid fa-paper-plane"></i> Selesai & Lihat Semua Nilai
@@ -326,7 +275,6 @@
 </div>
 
 <script>
-    // Audio Synthesizer
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
     function playSound(type) {
@@ -389,7 +337,6 @@
         }
     }
 
-    // Bank Soal
     const bankSoal = {
         indo: [
             { q: "1. Unsur utama dalam memahami kisah cerita adalah...", opts: ["A. Menghafal seluruh dialog", "B. Memahami alur dan pesan moral", "C. Menghitung jumlah kata", "D. Menulis ulang tanpa makna"], ans: 1 },
@@ -447,4 +394,12 @@
             { q: "9. Sikap saat pendapat musyawarah tidak diterima adalah...", opts: ["A. Marah", "B. Menerima dengan lapang dada", "C. Memaksa", "D. Mogok"], ans: 1 },
             { q: "10. Bentuk pengamalan Pancasila di sekolah adalah...", opts: ["A. Mengikuti upacara bendera dengan khidmat", "B. Bolos", "C. Berkelahi", "D. Merusak fasilitas"], ans: 0 },
             { q: "11. Sila pertama Pancasila dilambangkan dengan...", opts: ["A. Rantai", "B. Bintang", "C. Pohon Beringin", "D. Kepala Banteng"], ans: 1 },
-    
+            { q: "12. Lambang sila kelima Pancasila adalah...", opts: ["A. Padi dan Kapas", "B. Bintang", "C. Rantai", "D. Garuda"], ans: 0 },
+            { q: "13. Nilai dasar sila ketiga adalah...", opts: ["A. Nasionalisme dan cinta tanah air", "B. Individualisme", "C. Fanatisme", "D. Materialisme"], ans: 0 },
+            { q: "14. Menghargai hasil karya orang lain pengamalan sila...", opts: ["A. Sila ke-2", "B. Sila ke-4", "C. Sila ke-5", "D. Sila ke-1"], ans: 2 },
+            { q: "15. Dalam keluarga, pengambilan keputusan sebaiknya dengan...", opts: ["A. Keputusan sendiri", "B. Musyawarah keluarga", "C. Paksaan", "D. Pendapat tetangga"], ans: 1 },
+            { q: "16. Perilaku hemat dan tidak mewah mencerminkan sila...", opts: ["A. Sila ke-5", "B. Sila ke-1", "C. Sila ke-2", "D. Sila ke-3"], ans: 0 },
+            { q: "17. Mengapa antarsila Pancasila tidak bisa dipisahkan?", opts: ["A. Ketetapan undang-undang", "B. Saling menjiwai dan dijiwai", "C. Dibuat satu orang", "D. Lambangnya mirip"], ans: 1 },
+            { q: "18. Contoh pengamalan sila keempat di masyarakat adalah...", opts: ["A. Pemilihan ketua RT secara musyawarah/pemungutan suara jujur", "B. Kerja bakti", "C. Memberi sumbangan", "D. Berdoa"], ans: 0 },
+            { q: "19. Menjaga fasilitas umum di sekolah mencerminkan sila...", opts: ["A. Sila ke-3 dan ke-5", "B. Sila ke-1", "C. Sila ke-2", "D. Sila ke-4"], ans: 0 },
+        
