@@ -2,9 +2,9 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Ujian STS Kelas 6 - Khidmatussunnah</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -20,7 +20,7 @@
 
         * {
             box-sizing: border-box;
-            transition: all 0.25s ease;
+            touch-action: manipulation;
         }
 
         body {
@@ -28,155 +28,142 @@
             background: linear-gradient(135deg, #e0f2fe 0%, #f1f5f9 100%);
             color: var(--text);
             margin: 0;
-            padding: 20px 10px;
+            padding: 15px 10px;
             min-height: 100vh;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .container {
-            max-width: 750px;
+            max-width: 800px;
             margin: 0 auto;
             background: var(--card-bg);
-            padding: 30px 25px;
-            border-radius: 20px;
+            padding: 20px;
+            border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            position: relative;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         h1 {
             color: var(--primary);
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             margin: 0 0 5px 0;
             font-weight: 700;
         }
 
         .subtitle {
             color: #64748b;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 500;
         }
 
-        /* Navigasi Tab Mapel */
+        /* Navigasi Tablet-Friendly */
         .tab-container {
             display: flex;
             gap: 10px;
             margin-bottom: 25px;
-            background: #f1f5f9;
-            padding: 6px;
+            background: #e2e8f0;
+            padding: 8px;
             border-radius: 12px;
         }
 
         .tab-btn {
             flex: 1;
-            padding: 12px;
-            border: none;
-            background: transparent;
-            color: #64748b;
-            font-weight: 600;
+            padding: 16px 10px;
+            border: 2px solid transparent;
+            background: #ffffff;
+            color: #334155;
+            font-weight: 700;
             font-family: inherit;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            font-size: 0.9rem;
+            gap: 10px;
+            font-size: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            user-select: none;
         }
 
         .tab-btn.active {
-            background: var(--card-bg);
-            color: var(--primary);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary-dark);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
         }
 
-        /* Mode Soal Per Tampilan */
         .mapel-section {
             display: none;
         }
 
         .mapel-section.active {
             display: block;
-            animation: fadeIn 0.4s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .question-box {
             margin-bottom: 20px;
-            padding: 20px;
+            padding: 18px;
             background: #f8fafc;
             border-radius: 12px;
-            border: 1px solid #e2e8f0;
-            position: relative;
+            border: 1px solid #cbd5e1;
         }
 
         .question-title {
             font-size: 1rem;
             font-weight: 600;
-            margin-bottom: 12px;
-            color: #334155;
+            margin-bottom: 14px;
+            color: #1e293b;
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
             gap: 10px;
+            line-height: 1.4;
         }
 
         .btn-audio {
-            background: #e0e7ff;
+            background: #dbeafe;
             color: var(--primary);
-            border: none;
-            border-radius: 50%;
-            width: 32px;
-            height: 32px;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 0.9rem;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
-            justify-content: center;
+            gap: 6px;
             flex-shrink: 0;
-        }
-
-        .btn-audio:hover {
-            background: var(--primary);
-            color: white;
+            font-weight: 600;
         }
 
         .options label {
             display: flex;
             align-items: center;
-            background: white;
-            padding: 12px 16px;
-            margin: 8px 0;
+            background: #ffffff;
+            padding: 14px 16px;
+            margin: 10px 0;
             border-radius: 10px;
             cursor: pointer;
-            border: 2px solid #e2e8f0;
-            font-size: 0.92rem;
-            position: relative;
-        }
-
-        .options label:hover {
-            border-color: var(--primary);
-            background: #f0f7ff;
+            border: 2px solid #cbd5e1;
+            font-size: 0.95rem;
+            font-weight: 500;
+            user-select: none;
         }
 
         .options input[type="radio"] {
             margin-right: 12px;
-            accent-color: var(--primary);
-            transform: scale(1.2);
+            transform: scale(1.4);
+            pointer-events: none;
         }
 
-        /* Visual Feedback Jawaban */
         .options label.correct {
             background-color: #dcfce7 !important;
             border-color: var(--correct) !important;
             color: #15803d;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .options label.wrong {
@@ -186,44 +173,37 @@
         }
 
         .btn-submit {
-            background: linear-gradient(135deg, var(--secondary) 0%, #0f766e 100%);
+            background: var(--secondary);
             color: white;
             border: none;
-            padding: 16px;
-            font-size: 1.05rem;
+            padding: 18px;
+            font-size: 1.1rem;
             font-weight: 700;
             border-radius: 12px;
             cursor: pointer;
             width: 100%;
             margin-top: 25px;
-            box-shadow: 0 6px 20px rgba(13, 148, 136, 0.3);
+            box-shadow: 0 6px 18px rgba(13, 148, 136, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
         }
 
-        .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(13, 148, 136, 0.4);
-        }
-
-        /* Result Panel */
         .result-box {
             background: #ffffff;
             padding: 25px;
             border-radius: 16px;
             margin-top: 25px;
             display: none;
-            border: 2px solid #e2e8f0;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border: 2px solid #cbd5e1;
             text-align: center;
         }
 
         .score-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
+            gap: 10px;
             margin: 20px 0;
         }
 
@@ -231,16 +211,16 @@
             background: #f8fafc;
             padding: 15px 10px;
             border-radius: 10px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #cbd5e1;
         }
 
         .score-card .title {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: #64748b;
         }
 
         .score-card .value {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--primary);
             margin-top: 4px;
@@ -250,7 +230,7 @@
             display: inline-block;
             background: #f0fdf4;
             color: #166534;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border-radius: 30px;
             font-weight: 700;
             font-size: 1.2rem;
@@ -272,7 +252,7 @@
                 grid-template-columns: 1fr;
             }
             .tab-btn span {
-                display: none;
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -287,31 +267,31 @@
         <div class="subtitle"><i class="fa-solid fa-school"></i> Salafiyah Ula Khidmatussunnah</div>
     </div>
 
-    <!-- Tab Navigasi -->
+    <!-- Navigasi Tab Utama -->
     <div class="tab-container">
-        <button type="button" class="tab-btn active" onclick="switchTab('indo')">
+        <button type="button" id="tab-indo" class="tab-btn active">
             <i class="fa-solid fa-book"></i> <span>B. Indonesia</span>
         </button>
-        <button type="button" class="tab-btn" onclick="switchTab('inggris')">
+        <button type="button" id="tab-inggris" class="tab-btn">
             <i class="fa-solid fa-language"></i> <span>B. Inggris</span>
         </button>
-        <button type="button" class="tab-btn" onclick="switchTab('pkn')">
+        <button type="button" id="tab-pkn" class="tab-btn">
             <i class="fa-solid fa-flag"></i> <span>PKN</span>
         </button>
     </div>
 
     <form id="examForm" onsubmit="hitungNilai(event)">
-        <!-- MAPEL BAHASA INDONESIA -->
+        <!-- SECTION BAHASA INDONESIA -->
         <div class="mapel-section active" id="sec-indo">
             <div id="render-indo"></div>
         </div>
 
-        <!-- MAPEL BAHASA INGGRIS -->
+        <!-- SECTION BAHASA INGGRIS -->
         <div class="mapel-section" id="sec-inggris">
             <div id="render-inggris"></div>
         </div>
 
-        <!-- MAPEL PKN -->
+        <!-- SECTION PKN -->
         <div class="mapel-section" id="sec-pkn">
             <div id="render-pkn"></div>
         </div>
@@ -346,7 +326,7 @@
 </div>
 
 <script>
-    // --- EFEX SUARA SINTESIS (Web Audio API) ---
+    // Audio Synthesizer
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
     function playSound(type) {
@@ -369,8 +349,8 @@
             osc.stop(now + 0.05);
         } else if (type === 'correct') {
             osc.type = 'triangle';
-            osc.frequency.setValueAtTime(523.25, now); // C5
-            osc.frequency.setValueAtTime(659.25, now + 0.08); // E5
+            osc.frequency.setValueAtTime(523.25, now);
+            osc.frequency.setValueAtTime(659.25, now + 0.08);
             gain.gain.setValueAtTime(0.1, now);
             gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
             osc.start(now);
@@ -399,7 +379,6 @@
         }
     }
 
-    // Text To Speech (Suara Membaca Soal)
     function speakText(text) {
         if ('speechSynthesis' in window) {
             window.speechSynthesis.cancel();
@@ -410,7 +389,7 @@
         }
     }
 
-    // --- BANK SOAL ---
+    // Bank Soal
     const bankSoal = {
         indo: [
             { q: "1. Unsur utama dalam memahami kisah cerita adalah...", opts: ["A. Menghafal seluruh dialog", "B. Memahami alur dan pesan moral", "C. Menghitung jumlah kata", "D. Menulis ulang tanpa makna"], ans: 1 },
@@ -464,4 +443,8 @@
             { q: "5. Bersikap adil dan tidak diskriminatif sesuai sila ke...", opts: ["A. Sila ke-1", "B. Sila ke-3", "C. Sila ke-4", "D. Sila ke-5"], ans: 3 },
             { q: "6. Menjaga persatuan bangsa sesuai dengan sila...", opts: ["A. Sila ke-1", "B. Sila ke-2", "C. Sila ke-3", "D. Sila ke-4"], ans: 2 },
             { q: "7. Hubungan sila pertama dan kedua dicontohkan dengan...", opts: ["A. Beribadah sekaligus berbuat baik kepada sesama", "B. Beribadah demi dipuji", "C. Membantu tanpa peduli agama", "D. Memusuhi agama lain"], ans: 0 },
-            { q: "8. Gotong royong membersihkan lingkungan mencerminkan sila...", opts:
+            { q: "8. Gotong royong membersihkan lingkungan mencerminkan sila...", opts: ["A. Sila 1 dan 2", "B. Sila 3 dan 5", "C. Sila 2 dan 4", "D. Sila 1 saja"], ans: 1 },
+            { q: "9. Sikap saat pendapat musyawarah tidak diterima adalah...", opts: ["A. Marah", "B. Menerima dengan lapang dada", "C. Memaksa", "D. Mogok"], ans: 1 },
+            { q: "10. Bentuk pengamalan Pancasila di sekolah adalah...", opts: ["A. Mengikuti upacara bendera dengan khidmat", "B. Bolos", "C. Berkelahi", "D. Merusak fasilitas"], ans: 0 },
+            { q: "11. Sila pertama Pancasila dilambangkan dengan...", opts: ["A. Rantai", "B. Bintang", "C. Pohon Beringin", "D. Kepala Banteng"], ans: 1 },
+    
